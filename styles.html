@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>tIbtOs</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -49,6 +49,13 @@
             height: 100%;
             border-radius: 5px;
         }
+
+        /* Message styles */
+        .strength-message {
+            text-align: center;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
         
         .login-container input[type="submit"] {
             width: 100%;
@@ -78,6 +85,8 @@
                 <div class="strength-bar">
                     <div class="strength-fill" id="strength-fill"></div>
                 </div>
+                <!-- Message -->
+                <div class="strength-message" id="strength-message"></div>
                 <input type="submit" value="Login">
             </form>
         </div>
@@ -87,6 +96,7 @@
     <script>
         const passwordInput = document.getElementById('password');
         const strengthFill = document.getElementById('strength-fill');
+        const strengthMessage = document.getElementById('strength-message');
 
         passwordInput.addEventListener('input', updateStrength);
 
@@ -100,6 +110,15 @@
 
             strengthFill.style.width = `${strength}%`;
             strengthFill.style.backgroundColor = strength >= 100 ? 'green' : 'red';
+
+            // Update strength message
+            if (strength >= 100) {
+                strengthMessage.textContent = 'Strong password';
+                strengthMessage.style.color = 'green';
+            } else {
+                strengthMessage.textContent = 'Weak password';
+                strengthMessage.style.color = 'red';
+            }
         }
     </script>
 </body>
